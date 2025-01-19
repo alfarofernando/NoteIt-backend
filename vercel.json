@@ -2,10 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/server.ts",
+      "src": "dist/server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["prisma/**/*"]
+        "includeFiles": ["prisma/**/*"] 
       }
     }
   ],
@@ -14,11 +14,5 @@
       "src": "/(.*)",
       "dest": "dist/server.js"
     }
-  ],
-  "env": {
-    "DATABASE_URL": "mysql://root:iZhsYAyVYSIkieMvqGihjWFTSoFlONDL@roundhouse.proxy.rlwy.net:31785/railway",
-    "PRISMA_GENERATE": "true"
-  }
+  ]
 }
-
-

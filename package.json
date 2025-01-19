@@ -2,11 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "dist/server.js",
-  "scripts": {
+ "scripts": {
+    "postinstall": "prisma generate",
+    "build": "tsc && node migrate.js",
     "start": "node dist/server.js",
     "dev": "ts-node src/server.ts",
-    "build": "tsc && node migrate.js",
-    "postinstall": "prisma generate", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

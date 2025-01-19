@@ -4,8 +4,8 @@
   "main": "dist/server.js",
  "scripts": {
   "build": "npx prisma generate && tsc && node migrate.js",
-  "dev": "ts-node src/server.ts",
-  "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
 },
   "dependencies": {
     "@prisma/client": "^6.2.1",

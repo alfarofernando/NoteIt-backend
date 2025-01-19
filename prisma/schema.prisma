@@ -1,0 +1,60 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Modelos definidos
+model Note {
+  id         Int            @id @default(autoincrement())
+  title      String         @db.VarChar(200)
+  content    String         @db.VarChar(5000)
+  archived   Boolean        @default(false)
+  userId     Int
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  User       User           @relation(fields: [userId], references: [id])
+  categories NoteCategory[] // Relación con NoteCategory
+  tags       NoteTag[]      // Relación con NoteTag
+}
+
+model Category {
+  id    Int            @id @default(autoincrement())
+  name  String         @db.VarChar(100)
+  notes NoteCategory[] // Relación con NoteCategory
+}
+
+model Tag {
+  id    Int       @id @default(autoincrement())
+  name  String    @db.VarChar(100)
+  notes NoteTag[] // Relación con NoteTag
+}
+
+model NoteCategory {
+  noteId     Int
+  categoryId Int
+  note       Note     @relation(fields: [noteId], references: [id]) // Relación con Note
+  category   Category @relation(fields: [categoryId], references: [id]) // Relación con Category
+
+  @@id([noteId, categoryId])
+}
+
+model NoteTag {
+  noteId Int
+  tagId  Int
+  note   Note @relation(fields: [noteId], references: [id]) // Relación con Note
+  tag    Tag  @relation(fields: [tagId], references: [id]) // Relación con Tag
+
+  @@id([noteId, tagId])
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+  email     String   @unique
+  password  String   
+  notes     Note[]   // Relación con Note
+}

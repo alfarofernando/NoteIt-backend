@@ -1,29 +1,28 @@
 {
   "compilerOptions": {
-    "target": "ES6",                                /* Versión de JavaScript de salida (ES6 recomendado para Node.js) */
-    "noImplicitAny": false,
-    "module": "commonjs",                            /* Usa módulos de tipo CommonJS */
-    "moduleResolution": "node",                      /* Resolución de módulos compatible con Node.js */
-    "esModuleInterop": true,                         /* Habilita interoperabilidad con módulos CommonJS */
-    "strict": false,                                  /* Habilita todas las comprobaciones estrictas */
-    "forceConsistentCasingInFileNames": true,         /* Asegura el uso consistente de las mayúsculas en los nombres de archivo */
-    "skipLibCheck": true,                            /* Omite la verificación de los archivos .d.ts */
-    "outDir": "./dist",                              /* Directorio de salida para los archivos compilados */
-    "rootDir": "./src",                              /* Directorio raíz donde están tus archivos TypeScript */
-    "resolveJsonModule": true,                       /* Habilita la importación de archivos JSON como módulos */
+    "target": "ES2020",                                /* Versión de JavaScript de salida para mejor compatibilidad con Node.js */
+    "module": "commonjs",                              /* Usa módulos de tipo CommonJS */
+    "moduleResolution": "node",                        /* Resolución de módulos compatible con Node.js */
+    "rootDir": "./src",                                /* Directorio raíz donde están tus archivos TypeScript */
+    "outDir": "./dist",                                /* Directorio de salida para los archivos compilados */
+    "strict": true,                                    /* Habilita todas las comprobaciones estrictas */
+    "esModuleInterop": true,                           /* Habilita interoperabilidad con módulos CommonJS */
+    "forceConsistentCasingInFileNames": true,          /* Asegura el uso consistente de las mayúsculas en los nombres de archivo */
+    "skipLibCheck": true,                              /* Omite la verificación de los archivos .d.ts */
+    "resolveJsonModule": true,                         /* Habilita la importación de archivos JSON como módulos */
     "allowSyntheticDefaultImports": true,             /* Permite importar módulos que no tienen exportación por defecto */
-    "noEmitOnError": true,                           /* Evita la generación de archivos si hay errores de compilación */
-    "sourceMap": true,                               /* Crea los archivos de mapa de fuente para depuración */
-    "declaration": true,                             /* Genera archivos .d.ts para cada archivo TypeScript */
-    "declarationMap": true,                          /* Crea los mapas de declaración */
-    "lib": ["ES6", "DOM"],                           /* Bibliotecas estándar (ES6 y DOM si es necesario) */
-    "types": ["node", "express"] ,   
-     "typeRoots": ["./node_modules/@types", "./src"],                            /* Especifica que estamos usando los tipos de Node.js */
-    "baseUrl": ".",  // Asegúrate de que sea el directorio correcto
-    "paths": {
+    "noEmitOnError": true,                             /* Evita la generación de archivos si hay errores de compilación */
+    "sourceMap": true,                                 /* Crea los archivos de mapa de fuente para depuración */
+    "declaration": true,                               /* Genera archivos .d.ts para cada archivo TypeScript */
+    "declarationMap": true,                            /* Crea los mapas de declaración */
+    "lib": ["ES2020"],                                 /* Usa la biblioteca estándar ES2020 */
+    "types": ["node", "express"],                      /* Usa los tipos de Node.js y Express */
+    "typeRoots": ["./node_modules/@types"],            /* Especifica las rutas para los tipos */
+    "baseUrl": ".",                                    /* Establece el directorio base */
+    "paths": {                                         /* Alias para módulos (opcional) */
       "@prisma/client": ["prisma/client"]
     }
-    },
-  "include": ["src/**/*", "src/server.ts"],               /* Incluir todos los archivos dentro de la carpeta src y el archivo server.ts */
-  "exclude": ["node_modules"]                        /* Excluir la carpeta node_modules */
+  },
+  "include": ["src/**/*"],                             /* Incluir todos los archivos dentro de la carpeta src */
+  "exclude": ["node_modules"]                          /* Excluir la carpeta node_modules */
 }

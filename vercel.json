@@ -1,14 +1,24 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "src/server.ts",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["prisma/**/*", "node_modules/@prisma/client"]
+      }
     }
   ],
-  "env": {
-    "DATABASE_URL": "mysql://root:iZhsYAyVYSIkieMvqGihjWFTSoFlONDL@roundhouse.proxy.rlwy.net:31785/railway" 
-  },
   "hooks": {
-    "build": "prisma generate"
-  }
+    "build": "npx prisma generate"  // Asegúrate de que prisma se ejecute antes de la construcción
+  },
+  "env": {
+    "DATABASE_URL": "mysql://root:iZhsYAyVYSIkieMvqGihjWFTSoFlONDL@roundhouse.proxy.rlwy.net:31785/railway"  // Reemplaza con la URL de tu base de datos
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/server.js"
+    }
+  ]
 }

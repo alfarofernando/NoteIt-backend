@@ -5,8 +5,8 @@
  "scripts": {
   "start": "node dist/server.js",
   "dev": "ts-node src/server.ts",
-  "build": "prisma generate && tsc",
-  "test": "echo \"Error: no test specified\" && exit 1"
+"build": "prisma generate && tsc && node migrate.js",
+   "test": "echo \"Error: no test specified\" && exit 1"
 },
   "dependencies": {
     "@prisma/client": "^6.2.1",

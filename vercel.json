@@ -10,10 +10,10 @@
     }
   ],
   "hooks": {
-    "build": "npx prisma generate"  // Asegúrate de que prisma se ejecute antes de la construcción
+    "build": "npx prisma generate && npx prisma migrate deploy" 
   },
   "env": {
-    "DATABASE_URL": "mysql://root:iZhsYAyVYSIkieMvqGihjWFTSoFlONDL@roundhouse.proxy.rlwy.net:31785/railway"  // Reemplaza con la URL de tu base de datos
+    "DATABASE_URL": "mysql://root:iZhsYAyVYSIkieMvqGihjWFTSoFlONDL@roundhouse.proxy.rlwy.net:31785/railway"  
   },
   "routes": [
     {

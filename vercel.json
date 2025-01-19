@@ -5,20 +5,23 @@
       "src": "src/server.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["prisma/**/*", "node_modules/@prisma/client"]
+        "includeFiles": ["prisma/**/*"]
       }
     }
   ],
-  "hooks": {
-    "build": "npx prisma generate && npx prisma migrate deploy" 
-  },
   "env": {
-    "DATABASE_URL": "mysql://root:iZhsYAyVYSIkieMvqGihjWFTSoFlONDL@roundhouse.proxy.rlwy.net:31785/railway"  
+    "DATABASE_URL": "mysql://root:iZhsYAyVYSIkieMvqGihjWFTSoFlONDL@roundhouse.proxy.rlwy.net:31785/railway"
   },
   "routes": [
     {
       "src": "/(.*)",
       "dest": "dist/server.js"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "PRISMA_GENERATE": "true"
+    }
+  }
 }
+

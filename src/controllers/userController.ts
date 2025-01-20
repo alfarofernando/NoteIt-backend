@@ -8,6 +8,7 @@ const validator = require('validator');
 export const createUser = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
+  console.log(req.body);
   // Validación básica de campos
   if (!name || !email || !password) {
     return res.status(400).json({

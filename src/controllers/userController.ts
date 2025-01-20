@@ -8,6 +8,13 @@ const validator = require( 'validator');
 export const createUser = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
+   // Validación básica de campos
+  if (!name || !email || !password) {
+    return res.status(400).json({
+      message: 'Todos los campos son obligatorios.',
+    });
+  }
+  
   // Validar si el usuario o el email ya existen
   const existingUser = await prisma.user.findFirst({
     where: {
@@ -28,7 +35,7 @@ export const createUser = async (req: Request, res: Response) => {
     // Crear el usuario en la base de datos
     const user = await prisma.user.create({
       data: {
-        name: name,
+        name,
         email,
         password: hashedPassword,
       },

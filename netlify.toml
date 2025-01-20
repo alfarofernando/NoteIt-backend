@@ -6,3 +6,6 @@
   from = "/*"
   to = "/dist/server.js"
   status = 200
+
+[functions]
+  directory = "src/functions"

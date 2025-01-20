@@ -22,6 +22,8 @@ app.use(express.json());   // Parseo de JSON
 app.get('/', (req: Request, res: Response) => {
   res.send('Backend is running...');
 });
+// Manejar preflight requests
+app.options('*', corsMiddleware);
 
 // Rutas
 app.post('/login', login);

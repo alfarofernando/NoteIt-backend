@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
-import { prisma } from '../config/prisma'; // Asegúrate de tener Prisma configurado y el cliente importado
+import { prisma } from '../config/prisma'; 
 import { verifyPassword } from '../services/authService';
+
+
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   const { email, password } = req.body;

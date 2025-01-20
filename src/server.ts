@@ -7,7 +7,6 @@ import { login } from './controllers/authController';
 import noteRoutes from './routes/noteRoutes';
 import userRoutes from './routes/userRoutes';
 import express from 'express';
-import path from 'path';
 
 dotenv.config(); // Cargar las variables de entorno
 
@@ -33,7 +32,7 @@ app.use('/user', userRoutes);
 const testDbConnection = async () => {
   try {
     // Comprobamos la conexión
-    await prisma.$queryRaw`SELECT 1`; // Consulta sencilla para verificar la conexión
+    await prisma.$queryRaw`SELECT 1`; 
 
     console.log('Connection to the database has been established successfully.');
 

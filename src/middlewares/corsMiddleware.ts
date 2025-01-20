@@ -1,7 +1,7 @@
 import cors, { CorsOptions } from 'cors';
 
 const corsOptions: CorsOptions = {
-  origin: ['https://noteit-frontend.netlify.app/'], // Orígenes permitidos
+  origin: ['https://noteit-frontend.netlify.app'], // Orígenes permitidos
   methods: ['GET', 'POST', 'PUT', 'DELETE','OPTIONS'], // Métodos HTTP permitidos
   allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
   credentials: true, // Permitir cookies o encabezados de autenticación

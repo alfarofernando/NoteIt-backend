@@ -289,19 +289,33 @@ export const getArchivedNotes = async (req: Request, res: Response): Promise<Res
   }
 
   try {
-    const archivedNotes = await prisma.note.findMany({
+    const notes = await prisma.note.findMany({
       where: {
         userId: Number(userId),
         archived: true, // Filtrar por notas archivadas
       },
       include: {
-        categories: true,
-        tags: true,
+        categories: {
+          include: {
+            category: true,
+          },
+        },
+        tags: {
+          include: {
+            tag: true,
+          },
+        },
       },
     });
 
+    const formattedNotes = notes.map((note) => ({
+      ...note,
+      categories: note.categories.map((noteCategory) => noteCategory.category),
+      tags: note.tags.map((noteTag) => noteTag.tag),
+    }));
+
     // Si no hay notas archivadas, devolver un array vacío
-    return res.json(archivedNotes.length > 0 ? archivedNotes : []);
+    return res.json(formattedNotes.length > 0 ? notes : []);
   } catch (error) {
     console.error('Error al obtener las notas archivadas:', error);
     return res.status(500).json({ error: 'Failed to fetch archived notes' });

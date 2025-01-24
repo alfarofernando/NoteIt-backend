@@ -29,6 +29,14 @@ export const createUser = async (req: Request, res: Response) => {
     });
   }
 
+  if (!validator.isStrongPassword(password)) {
+    return res.status(400).json({
+      message: 'La contraseña no es suficientemente segura.',
+      criteria: 'Debe incluir al menos 8 caracteres, una letra mayúscula, una minúscula, un número y un símbolo (! @ # $ % ^ & * ( ) _ - = + { } [ ] | \\ : ; \' < > , . ? /).',
+
+    })
+  }
+
   try {
     // Encriptar la contraseña
     const hashedPassword = await bcryptjs.hash(password, 10);
